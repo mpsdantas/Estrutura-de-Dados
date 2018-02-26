@@ -22,3 +22,26 @@
 1519626175 /home/marcus/Documentos/UFRN/2018.1/Estrutura de Dados/Pratica 01/Prática Computacional I/ListaCandidatos.h
 	"NoCandidato.h"
 
+1519653807 source:/home/marcus/Documentos/Estrutura-de-Dados/Prática Computacional I/main.cpp
+	<iostream>
+
+1519653807 source:/home/marcus/Documentos/Estrutura-de-Dados/Prática Computacional I/NoCandidato.cpp
+	"NoCandidato.h"
+
+1519653807 /home/marcus/Documentos/Estrutura-de-Dados/Prática Computacional I/NoCandidato.h
+	"Candidato.h"
+
+1519653807 /home/marcus/Documentos/Estrutura-de-Dados/Prática Computacional I/Candidato.h
+	<cstring>
+	<sstream>
+
+1519676681 source:/home/marcus/Documentos/Estrutura-de-Dados/Prática Computacional I/ListaCandidatos.cpp
+	<cstring>
+	<fstream>
+	<iostream>
+	"ListaCandidatos.h"
+	"Candidato.h"
+
+1519671760 /home/marcus/Documentos/Estrutura-de-Dados/Prática Computacional I/ListaCandidatos.h
+	"NoCandidato.h"
+

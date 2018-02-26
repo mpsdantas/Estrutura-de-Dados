@@ -5,6 +5,7 @@
 #include "Candidato.h"
 using namespace std;
 ListaCandidatos::ListaCandidatos(string nomeDoArquivo){
+    head = NULL;
     Candidato* novoCandidato;
     ifstream fcin(nomeDoArquivo.c_str());
     string dados;
@@ -18,38 +19,76 @@ ListaCandidatos::ListaCandidatos(string nomeDoArquivo){
 }
 void ListaCandidatos::adicioneComoHead(Candidato* novoCandidato){
     NoCandidato* candidatoParaInsercao;
-    if(estaVazia()){
-        candidatoParaInsercao = new NoCandidato(novoCandidato,NULL);
-        head = candidatoParaInsercao;
-    }
     candidatoParaInsercao = new NoCandidato(novoCandidato,head);
     this->head = candidatoParaInsercao;
 }
 int ListaCandidatos::tamanho(){
-    int contadorDeCandidatos = 0;
+    int contadorDeCandidatos = 1;
     NoCandidato *candidatoAtualDaLista;
     candidatoAtualDaLista = head;
     if(this->head==NULL) return 0;//Verificação se a lista é vazia
     while(candidatoAtualDaLista->next!=NULL){
-        contadorDeCandidatos++;
         candidatoAtualDaLista = candidatoAtualDaLista->next;
+        contadorDeCandidatos++;
     }
     return contadorDeCandidatos;
 }
 string ListaCandidatos::toString(){
-    if(tamanho()==0) return "0";
-    return head->toString();
+    if(head==NULL) return "0";
+    string nomes = "";
+    NoCandidato* candidatoExibicao;
+    candidatoExibicao = head;
+    while(candidatoExibicao!=NULL){
+        nomes += candidatoExibicao->conteudo->toString();
+        nomes += " -> ";
+        candidatoExibicao = candidatoExibicao->next;
+    }
+    nomes += " 0 ";
+    return nomes;
 }
-bool ListaCandidatos::remover(string nome, string sobrenome){
-    if(estaVazia()) return false;
+bool ListaCandidatos::remove(string nome, string sobrenome){
+    if(head==NULL) return false;
     NoCandidato *candidatoAtualDaLista;
     NoCandidato *candidatoAnteriorDaLista;
     candidatoAnteriorDaLista = NULL;
     candidatoAtualDaLista = head;
-    if(this->head==NULL) return 0;//Verificação se a lista é vazia
-    while(candidatoAtualDaLista->next!=NULL){
+    while(candidatoAtualDaLista!=NULL){
         if(candidatoAtualDaLista->conteudo->igual(nome,sobrenome)){
-            //Fazer tratamentos
+            if(candidatoAnteriorDaLista==NULL){
+                head = candidatoAtualDaLista->next;
+                delete candidatoAtualDaLista;
+                return true;
+            }else{
+                NoCandidato *candidatoLiberarMemoria = candidatoAtualDaLista->next;
+                delete candidatoAtualDaLista;
+                candidatoAtualDaLista = candidatoLiberarMemoria;
+                candidatoAnteriorDaLista->next = candidatoAtualDaLista;
+                return true;
+            }
+        }
+        candidatoAnteriorDaLista = candidatoAtualDaLista;
+        candidatoAtualDaLista = candidatoAtualDaLista->next;
+    }
+    return false;
+}
+void ListaCandidatos::filtrarCandidatos(int nota){
+    NoCandidato *candidatoAtualDaLista;
+    NoCandidato *candidatoAnteriorDaLista;
+    candidatoAnteriorDaLista = NULL;
+    candidatoAtualDaLista = head;
+    while(candidatoAtualDaLista!=NULL){
+        if(candidatoAtualDaLista->conteudo->nota < nota){
+            if(candidatoAnteriorDaLista==NULL){
+                cout << "Entrou IF" << endl;
+                head = candidatoAtualDaLista->next;
+                delete candidatoAtualDaLista;
+            }else{
+                cout << "Entrou ELSE" << endl;
+                NoCandidato *candidatoLiberarMemoria = candidatoAtualDaLista->next;
+                delete candidatoAtualDaLista;
+                candidatoAtualDaLista = candidatoLiberarMemoria;
+                candidatoAnteriorDaLista->next = candidatoAtualDaLista;
+            }
         }
         candidatoAnteriorDaLista = candidatoAtualDaLista;
         candidatoAtualDaLista = candidatoAtualDaLista->next;

@@ -11,7 +11,8 @@ public:
     void adicioneComoHead(Candidato* novoCandidato);
     int tamanho();
     string toString();
-    bool remover(string nome, string sobrenome);
+    bool remove(string nome, string sobrenome);
+    void filtrarCandidatos(int nota);
 };
 
 
