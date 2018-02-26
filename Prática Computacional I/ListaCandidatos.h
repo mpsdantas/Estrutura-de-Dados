@@ -1,0 +1,18 @@
+#ifndef LISTACANDIDATOS_H_INCLUDED
+#define LISTACANDIDATOS_H_INCLUDED
+
+#include "NoCandidato.h"
+class ListaCandidatos{
+public:
+    NoCandidato *head;
+    inline ListaCandidatos(){this->head = NULL;}
+    ListaCandidatos(string nomeDoArquivo);
+    inline bool estaVazia(){return head == NULL;}
+    void adicioneComoHead(Candidato* novoCandidato);
+    int tamanho();
+    string toString();
+    bool remover(string nome, string sobrenome);
+};
+
+
+#endif // LISTACANDIDATOS_H_INCLUDED

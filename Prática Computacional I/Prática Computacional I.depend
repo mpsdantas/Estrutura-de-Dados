@@ -1,0 +1,24 @@
+# depslib dependency file v1.0
+1519616762 source:/home/marcus/Documentos/UFRN/2018.1/Estrutura de Dados/Pratica 01/Prática Computacional I/main.cpp
+	<iostream>
+
+1519617139 source:/home/marcus/Documentos/UFRN/2018.1/Estrutura de Dados/Pratica 01/Prática Computacional I/NoCandidato.cpp
+	"NoCandidato.h"
+
+1519621242 /home/marcus/Documentos/UFRN/2018.1/Estrutura de Dados/Pratica 01/Prática Computacional I/NoCandidato.h
+	"Candidato.h"
+
+1519629069 /home/marcus/Documentos/UFRN/2018.1/Estrutura de Dados/Pratica 01/Prática Computacional I/Candidato.h
+	<cstring>
+	<sstream>
+
+1519627972 source:/home/marcus/Documentos/UFRN/2018.1/Estrutura de Dados/Pratica 01/Prática Computacional I/ListaCandidatos.cpp
+	<cstring>
+	<fstream>
+	<iostream>
+	"ListaCandidatos.h"
+	"Candidato.h"
+
+1519626175 /home/marcus/Documentos/UFRN/2018.1/Estrutura de Dados/Pratica 01/Prática Computacional I/ListaCandidatos.h
+	"NoCandidato.h"
+
