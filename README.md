@@ -2,3 +2,5 @@
 
 ## Ementa
 
+⋅ Análise de Algoritmos 
+
