@@ -73,24 +73,29 @@ bool ListaCandidatos::remove(string nome, string sobrenome){
 }
 void ListaCandidatos::filtrarCandidatos(int nota){
     NoCandidato *candidatoAtualDaLista;
-    NoCandidato *candidatoAnteriorDaLista;
-    candidatoAnteriorDaLista = NULL;
+    NoCandidato *candidatoAnteriorDaLista = NULL;
     candidatoAtualDaLista = head;
     while(candidatoAtualDaLista!=NULL){
-        if(candidatoAtualDaLista->conteudo->nota < nota){
+        if(candidatoAtualDaLista->conteudo->nota<nota){
             if(candidatoAnteriorDaLista==NULL){
-                cout << "Entrou IF" << endl;
                 head = candidatoAtualDaLista->next;
-                delete candidatoAtualDaLista;
+                NoCandidato *liberarMemoria = candidatoAtualDaLista;
+                delete liberarMemoria;
+                candidatoAtualDaLista = head;
             }else{
-                cout << "Entrou ELSE" << endl;
-                NoCandidato *candidatoLiberarMemoria = candidatoAtualDaLista->next;
+                candidatoAnteriorDaLista->next = candidatoAtualDaLista->next;
+                NoCandidato *novoCandidatoAtual = candidatoAtualDaLista->next;
                 delete candidatoAtualDaLista;
-                candidatoAtualDaLista = candidatoLiberarMemoria;
-                candidatoAnteriorDaLista->next = candidatoAtualDaLista;
+                candidatoAtualDaLista = novoCandidatoAtual;
             }
+        }else{
+            candidatoAnteriorDaLista = candidatoAtualDaLista;
+            candidatoAtualDaLista = candidatoAtualDaLista->next;
         }
-        candidatoAnteriorDaLista = candidatoAtualDaLista;
-        candidatoAtualDaLista = candidatoAtualDaLista->next;
     }
+}
+void ListaCandidatos::concatena(ListaCandidatos* novaLista){
+    NoCandidato *it = head;
+    while(it->next!=NULL) it = it->next;
+    it->next = novaLista->head;
 }

@@ -13,6 +13,7 @@ public:
     string toString();
     bool remove(string nome, string sobrenome);
     void filtrarCandidatos(int nota);
+    void concatena(ListaCandidatos* novaLista);
 };
 
 
