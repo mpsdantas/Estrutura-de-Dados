@@ -3,19 +3,35 @@
 class Quicksort {
 
     static void swap(int[] a, int i, int j) {
-        // a ser completada
+        int variavelTemporariaValorA;
+        variavelTemporariaValorA = a[i];
+        a[i] = a[j];
+        a[j] = variavelTemporariaValorA;
     }
 
     static int partition(int[] a, int l, int r) {
-        return 0; // a ser completada
+        int m = l;
+        int meioVetor = a[l];
+        // O meio inicia na posição l e vai andando até chegar no meio realmente do vetor
+        for (int i = l+1 ; i <= r ; i++){
+            if (a[i] < meioVetor){
+                swap(a, i,m + 1);
+                m++;
+            }
+        }
+        swap(a,l,m);
+        return m;
     }
 
     static void quickrec(int[] a, int l, int r) {
-        // a ser completada
+        if ( l < r ){
+            quickrec(a,l,partition(a,l,r));
+            quickrec(a,partition(a,l,r)+1,r);
+        }
     }
 
     static void quicksort(int[] a) {
-        // a ser completada
+        quickrec(a,0,a.length-1);
     }
 
 }
